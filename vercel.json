@@ -4,7 +4,7 @@
         {
             "src": "index.js",
             "use": "@vercel/node",
-            "installCommand": "npm install puppeteer"
+            "commands": "npm install"
         }
     ],
     "routes": [
