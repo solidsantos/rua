@@ -19,7 +19,7 @@
   "homepage": "https://github.com/solidsantos/rua#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "puppeteer": "^21.3.1"
+    "puppeteer": "^21.3.6"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
