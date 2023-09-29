@@ -3,7 +3,14 @@ const puppeteer = require("puppeteer");
 
 const getMenu = async () => {
     try {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({
+            headless: "new", 
+            args: [
+                "--no-sandbox",
+                "--disable-dev-shm-usage"
+              ],
+        });
+        
         const page = await browser.newPage();
 
         // Navigate the page
