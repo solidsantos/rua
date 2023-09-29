@@ -1,20 +1,16 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3333;
-const ru = require('./scrapData');
-
-
-// using puppeteer for web scratching
-const puppeteer = require('puppeteer');
+const ru = require("./scrapData");
 
 // Using GET method
-//app.get('/home', (request, response) => response.status(200).send('Olá, Mundo!'));
-app.get('', (request, response) => {
-    const ruData = ru.getMenu();
-    ruData.then(menu => {
-        console.log(menu);
-        response.json(menu);
-    })
+//app.get("/home", (request, response) => response.status(200).send("Olá, Mundo!"));
+app.get("/", (request, response) => {
+	response.setHeader("Content-Type", "application/json");
+	const ruData = ru.getMenu();
+	ruData.then(menu => {
+		response.send(JSON.stringify(menu, null, 2));
+	});
 });
 
 // Listen PORT
