@@ -1,16 +1,12 @@
 /* eslint-disable no-undef */
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+require("dotenv").config();
 
 const getMenu = async () => {
     try {
-        const browser = await puppeteer.launch({
-            headless: "new", 
-            args: [
-                "--no-sandbox",
-                "--disable-dev-shm-usage"
-              ],
+        const browser = await puppeteer.connect({
+            browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
         });
-        
         const page = await browser.newPage();
 
         // Navigate the page
@@ -78,9 +74,9 @@ const getMenu = async () => {
         });
         await browser.close();
         return menu;
-    } catch (error){
+    } catch (error) {
         console.error("Ocorreu um erro ao acessar os dados:", error);
-        return { error: "Ocorreu um erro ao acessar os dados"};
+        return { error: "Ocorreu um erro ao acessar os dados" };
     }
 
 };
